@@ -18,7 +18,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 /**
  * @author DEV sprout
@@ -35,7 +34,12 @@ public class Menu extends AbstractSeed implements Serializable {
   @Column(name = "name")
   private String name;
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "group_rol_id", referencedColumnName = "group_rol_id", foreignKey = @ForeignKey(name = "fk_menu_group_rol", value = ConstraintMode.PROVIDER_DEFAULT))
+  @JoinColumn(name = "group_rol_id", referencedColumnName = "group_rol_id", foreignKey =
+    @ForeignKey(
+      name = "fk_menu_group_rol",
+      value = ConstraintMode.PROVIDER_DEFAULT
+    )
+  )
   private GroupRol groupRol;
   @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY)
   private List<Submenu> listSubmenus;
@@ -107,7 +111,27 @@ public class Menu extends AbstractSeed implements Serializable {
 
   @Override
   public String objInfo() {
-    String text = "Menu {}";
+    StringBuilder builder = new StringBuilder();
+    builder.append("Menu {");
+    builder.append(" id: ");
+    builder.append(this.id);
+    builder.append(" name: ");
+    builder.append(this.name);
+    builder.append(" flagState: ");
+    builder.append(this.flagState);
+    builder.append(" flagVisible: ");
+    builder.append(this.flagVisible);
+    builder.append(" createDate: ");
+    builder.append(this.createDate);
+    builder.append(" lastUpdate: ");
+    builder.append(this.lastUpdate);
+    builder.append(" groupRol: ");
+    builder.append(this.groupRol.getName());
+    builder.append("(");
+    builder.append(this.groupRol.getId());
+    builder.append(")");
+    builder.append(" }");
+    String text = builder.toString();
     return text;
   }
 }

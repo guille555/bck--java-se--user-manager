@@ -14,7 +14,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 /**
  * @author DEV sprout
@@ -103,7 +102,22 @@ public class GroupRol extends AbstractSeed implements Serializable {
 
   @Override
   public String objInfo() {
-    String text = "GroupRol {}";
+    StringBuilder builder = new  StringBuilder();
+    builder.append("GroupRol {");
+    builder.append(" id: ");
+    builder.append(this.id);
+    builder.append(" name: ");
+    builder.append(this.name);
+    builder.append(" flagState: ");
+    builder.append(this.flagState);
+    builder.append(" flagVisible: ");
+    builder.append(this.flagVisible);
+    builder.append(" createDate: ");
+    builder.append(this.createDate);
+    builder.append(" lastUpdate: ");
+    builder.append(this.lastUpdate);
+    builder.append(" }");
+    String text = builder.toString();
     return text;
   }
 }

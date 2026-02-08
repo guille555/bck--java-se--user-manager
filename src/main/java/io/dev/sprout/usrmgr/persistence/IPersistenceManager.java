@@ -1,5 +1,7 @@
 package io.dev.sprout.usrmgr.persistence;
 
+import java.util.Map;
+
 /**
  * @author DEV sprout
  */
@@ -11,5 +13,5 @@ public interface IPersistenceManager {
 
   public abstract Object remove(Object object);
 
-  public abstract Object findByKey(Class entityClass, Object key);
+  public abstract Object findByKey(Class<?> entityClass, Object key, Map<String, Object> properties);
 }
