@@ -3,6 +3,7 @@ package io.dev.sprout.usrmgr.controller;
 import io.dev.sprout.usrmgr.model.GroupRol;
 import io.dev.sprout.usrmgr.service.GroupRolServiceImp;
 import io.dev.sprout.usrmgr.service.IGroupRolService;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,7 +32,7 @@ public class GroupRollController {
     return control;
   }
 
-  private boolean controlDeleteData(Map<String, String> data) {
+  private boolean controlIdData(Map<String, String> data) {
     boolean controlId = (data.containsKey("id") && (Byte.parseByte(data.get("id")) > 0)) ? (true) : (false);
     return controlId;
   }
@@ -55,11 +56,27 @@ public class GroupRollController {
   }
 
   public GroupRol delete(Map<String, String> data) {
-    boolean control = this.controlDeleteData(data);
+    boolean control = this.controlIdData(data);
     GroupRol result = new GroupRol();
     if (control) {
       result = this.service.delete(data);
     }
     return result;
+  }
+
+  public GroupRol findById(Map<String, String> data) {
+    boolean control = this.controlIdData(data);
+    Byte id = null;
+    GroupRol result = new GroupRol();
+    if (control) {
+      id = Byte.valueOf(data.get("id"));
+      result = this.service.findById(id);
+    }
+    return result;
+  }
+
+  public List<GroupRol> findAll() {
+    List<GroupRol> list = this.service.findAll();
+    return list;
   }
 }

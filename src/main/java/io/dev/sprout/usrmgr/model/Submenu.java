@@ -106,7 +106,31 @@ public class Submenu extends AbstractSeed implements Serializable {
 
   @Override
   public String objInfo() {
-    String text = "Submenu {}";
+    StringBuilder builder = new StringBuilder();
+    builder.append("Submenu {");
+    builder.append(" id: ");
+    builder.append(this.id);
+    builder.append(" name: ");
+    builder.append(this.name);
+    builder.append(" flagSate: ");
+    builder.append(this.flagState);
+    builder.append(" flagVisible: ");
+    builder.append(this.flagVisible);
+    builder.append(" createDate: ");
+    builder.append(this.createDate);
+    builder.append(" lastUpdate: ");
+    builder.append(this.lastUpdate);
+    builder.append(" menu: ");
+    builder.append(this.menu.getName());
+    builder.append("(");
+    builder.append(this.menu.getId());
+    builder.append(")");
+    builder.append(" groupRol: ");
+    builder.append(this.menu.getGroupRol().getName());
+    builder.append("(");
+    builder.append(this.menu.getGroupRol().getId());
+    builder.append(") }");
+    String text = builder.toString();
     return text;
   }
 }

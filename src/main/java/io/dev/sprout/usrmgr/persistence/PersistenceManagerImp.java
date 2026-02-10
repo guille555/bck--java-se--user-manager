@@ -68,7 +68,7 @@ public class PersistenceManagerImp implements IPersistenceManager {
     EntityManager manager = null;
     try {
       manager = Factory.getFactory().createEntityManager();
-      result = manager.find(entityClass, key);
+      result = manager.find(entityClass, key, properties);
       return result;
     } catch (Exception exc) {
       return null;

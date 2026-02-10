@@ -102,7 +102,38 @@ public class ItemOption extends AbstractSeed implements Serializable {
 
   @Override
   public String objInfo() {
-    String text = "ItemOption {}";
+    StringBuilder builder = new StringBuilder();
+    builder.append("ItemOption { ");
+    builder.append(" id: ");
+    builder.append(this.id);
+    builder.append(" name: ");
+    builder.append(this.name);
+    builder.append(" route: ");
+    builder.append(this.route);
+    builder.append(" flagState: ");
+    builder.append(this.flagState);
+    builder.append(" flagVisible: ");
+    builder.append(this.flagVisible);
+    builder.append(" createDate: ");
+    builder.append(this.createDate);
+    builder.append(" lastUpdate: ");
+    builder.append(this.lastUpdate);
+    builder.append(" Submenu: ");
+    builder.append(this.submenu.getName());
+    builder.append(" (");
+    builder.append(this.submenu.getId());
+    builder.append(") ");
+    builder.append(" Menu: ");
+    builder.append(this.submenu.getMenu().getName());
+    builder.append(" (");
+    builder.append(this.submenu.getMenu().getId());
+    builder.append(") ");
+    builder.append(" GroupRol: ");
+    builder.append(this.submenu.getMenu().getGroupRol().getName());
+    builder.append(" (");
+    builder.append(this.submenu.getMenu().getGroupRol().getId());
+    builder.append(")");
+    String text = builder.toString();
     return text;
   }
 }

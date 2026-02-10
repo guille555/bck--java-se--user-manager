@@ -3,7 +3,9 @@ package io.dev.sprout.usrmgr.service;
 import io.dev.sprout.usrmgr.dao.GroupRolDAOImp;
 import io.dev.sprout.usrmgr.dao.IGroupRolDAO;
 import io.dev.sprout.usrmgr.model.GroupRol;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -108,6 +110,21 @@ public class GroupRolServiceImp implements IGroupRolService {
     } catch (Exception exc) {
       result = new GroupRol();
       return result;
+    }
+  }
+
+  @Override
+  public List<GroupRol> findAll() {
+    List<GroupRol> list = null;
+    try {
+      list = this.dao.findAll();
+      if (list == null) {
+        return new ArrayList<GroupRol>();
+      }
+      return list;
+    } catch (Exception exc) {
+      list = new ArrayList<GroupRol>();
+      return list;
     }
   }
 }
